@@ -1,6 +1,6 @@
 import { View,StyleSheet, Image } from 'react-native'
 import React from 'react'
-import { NativeBaseProvider, Box, Button, Switch, VStack, TextArea,Heading, Text, Input, Icon } from "native-base";
+import { NativeBaseProvider, Box, Button, Switch, VStack, TextArea,Heading, Text, Input, Icon,Pressable } from "native-base";
 
 
 export default function Register() {
@@ -12,9 +12,8 @@ export default function Register() {
         
         <Input mx="3" placeholder="Name" w="80%"/>
         <Input mx="3" placeholder="Email" w="80%"/>
-        <Input mx="3" placeholder="Password" w="80%"/>
+        <Input type={false ? "text" : "password"} mx="3" placeholder="Password" w="80%"/>
         {/* <Input mx="3" placeholder="Password" w="80%"/> */}
-        <Icon type="FontAwesome" name="home" />
 
         <Button style={style.btn} onPress={() => console.log("hello world")} w="50%">Create</Button>
         <Text style={{marginTop:'15%',}}>Have an account? Login</Text>

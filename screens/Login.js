@@ -8,7 +8,7 @@ export default function Login() {
         <Heading style={style.heading} size="xl" bold>WELCOME BACK</Heading>
         <Image style={{marginBottom:'10%',}} source={require("../assets/img/login.png")} />
         <Input mx="3" placeholder="Email" w="80%"/>
-        <Input mx="3" placeholder="Password" w="80%"/>
+        <Input type={false ? "text" : "password"} mx="3" placeholder="Password" w="80%"/>
         <Button style={style.btn} onPress={() => console.log("hello world")} w="50%">Login</Button>
         <Text style={{marginTop:'15%',}}>Don’t have an account? Register</Text>
       </VStack>
