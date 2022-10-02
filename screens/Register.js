@@ -7,7 +7,7 @@ export default function Register({navigation}) {
   return (
     <NativeBaseProvider>
       <VStack style={style.container} space={5}>
-        <Heading style={style.heading} size="xl" bold>CREATE ACCOUNT</Heading>
+        <Heading style={style.heading} size="xl" color="blue.500" bold>CREATE ACCOUNT</Heading>
         <Image style={{marginBottom:'2%',}} source={require("../assets/img/i.png")} />
         
         <Input mx="3" placeholder="Name" w="80%"/>

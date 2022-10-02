@@ -6,7 +6,7 @@ export default function Login({navigation}) {
   return (
     <NativeBaseProvider>
       <VStack style={style.container} space={5}>
-        <Heading style={style.heading} size="xl" bold>
+        <Heading style={style.heading} size="xl" color="blue.500" bold>
           WELCOME BACK
         </Heading>
         <Image
