@@ -23,7 +23,7 @@ export default function Login({navigation}) {
         <Button
           style={style.btn}
           onPress={() => {
-            navigation.navigate('Register');
+            navigation.navigate('Root');
           }}
           w="50%">
           Login
