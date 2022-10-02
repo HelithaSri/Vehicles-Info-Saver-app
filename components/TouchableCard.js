@@ -14,7 +14,7 @@ export default function TouchableCard() {
         <View style={{width: '35%'}}>
           <Image
             style={style.logo}
-            source={require('../assets/img/login.png')}
+            source={require('../assets/img/electric_car.png')}
           />
         </View>
         {/* <VStack w="100" justifyContent="center">
