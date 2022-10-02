@@ -1,9 +1,9 @@
 import { View,StyleSheet, Image } from 'react-native'
 import React from 'react'
-import { NativeBaseProvider, Box, Button, Switch, VStack, TextArea,Heading, Text, Input, Icon,Pressable } from "native-base";
+import { NativeBaseProvider, Box, Button, Switch, VStack, TextArea,Heading, Text, Input, Icon,Pressable,HStack } from "native-base";
 
 
-export default function Register() {
+export default function Register({navigation}) {
   return (
     <NativeBaseProvider>
       <VStack style={style.container} space={5}>
@@ -16,7 +16,19 @@ export default function Register() {
         {/* <Input mx="3" placeholder="Password" w="80%"/> */}
 
         <Button style={style.btn} onPress={() => console.log("hello world")} w="50%">Create</Button>
-        <Text style={{marginTop:'15%',}}>Have an account? Login</Text>
+        
+        <HStack style={{alignItems: 'center'}}>
+        <Text style={{marginTop:'15%',}}>Have an account?</Text>
+          <Button
+            style={{marginTop: '15%'}}
+            variant="link"
+            onPress={() => {
+              navigation.navigate('Login');
+            }}>
+            Login
+          </Button>
+        </HStack>
+
       </VStack>
     </NativeBaseProvider>
   );
