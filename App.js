@@ -7,6 +7,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from './screens/Home';
+import AddVehicle from './screens/AddVehicle';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -54,8 +55,9 @@ function Root() {
           tabBarInactiveTintColor: 'gray',
         })}
       >
+
       <Tab.Screen options={{ headerShown: false }} name="Home" component={Home} />
-      <Tab.Screen options={{ headerShown: false }} name="Add" component={Register} />
+      <Tab.Screen options={{ headerShown: false }} name="Add" component={AddVehicle} />
     </Tab.Navigator>
   );
 }
