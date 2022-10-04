@@ -7,7 +7,7 @@ export default function Home() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
             .then((response) => response.json())
             .then((json) => setPosts(json));
     })

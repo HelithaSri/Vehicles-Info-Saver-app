@@ -1,6 +1,7 @@
 import { View, FlatList, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import React, { useEffect, useState } from 'react'
 import { NativeBaseProvider, VStack, HStack, Heading, Text, Container, Center } from "native-base";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function TouchableCard() {
   return (
@@ -24,7 +25,7 @@ export default function TouchableCard() {
         <View style={{width: '62%'}}>
           <Heading size="sm">Royal Enfield Classic Desert Storm </Heading>
           <Text style={{marginBottom: 10, fontWeight: 'bold'}}>
-            Nawalapitiya
+          <Ionicons name={"location-outline"} size={18} color={"red"} /> Nawalapitiya
           </Text>
         </View>
       </HStack>
