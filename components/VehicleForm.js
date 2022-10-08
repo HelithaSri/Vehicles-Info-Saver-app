@@ -72,8 +72,8 @@ export default function VehicleForm({route}) {
             </View>
             <View>
               <VStack space={5} alignItems="center" w="100%">
-                <Input mx="3" placeholder="Vehicle Name" w="70%" value={vehicleName} isReadOnly={readOnly}/>
-                <Input mx="3" placeholder="Location" w="70%" value={location} isReadOnly={readOnly}/>
+                <Input mx="3" placeholder="Vehicle Name" w="70%" value={vehicleName} onChangeText={(e) => { setVehicleName(e) }} isReadOnly={readOnly}/>
+                <Input mx="3" placeholder="Location" w="70%" value={location} onChangeText={(e) => {setLocation(e)}} isReadOnly={readOnly}/>
                 <TextArea
                   h={20}
                   placeholder="Describe Vehicle"
@@ -81,6 +81,7 @@ export default function VehicleForm({route}) {
                   h="200"
                   isReadOnly={readOnly}
                   value={vehicleDescription}
+                   onChangeText={(e) => {setVehicleDescription(e)}}
                 />
               </VStack>
             </View>
