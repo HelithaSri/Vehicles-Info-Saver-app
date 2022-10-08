@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { NativeBaseProvider, VStack, HStack, Heading, Text, Container, Center } from "native-base";
 import TouchableCard from './../components/TouchableCard';
 
-export default function Home() {
+export default function Home({navigation}) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export default function Home() {
             <FlatList
                 data={posts}
                 renderItem={({ item }) =>
-                    <TouchableCard/>
+                    <TouchableCard data={item} nav={navigation}/>
                 }
             />
         </View>

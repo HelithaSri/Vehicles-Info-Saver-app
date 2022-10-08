@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { NativeBaseProvider, VStack, HStack, Heading, Text, Container, Center } from "native-base";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function TouchableCard() {
+export default function TouchableCard({nav,data}) {
   return (
     <TouchableOpacity
       style={style.card}
       activeOpacity={0.85}
       onPress={() => {
-        console.log('hello');
+            nav.navigate('Details',{obj:data,readOnlyProp:true});
       }}>
       <HStack style={{padding: 10}} space={2} alignItems="center">
         <View style={{width: '35%'}}>
