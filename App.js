@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from './screens/Home';
 import AddVehicle from './screens/AddVehicle';
+import VehicleForm from './components/VehicleForm';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,13 +27,14 @@ export default function App() {
           component={Root}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="Details" component={VehicleForm} options={{headerShown: true}}/>
       </Stack.Navigator>
 
       
     </NavigationContainer>
   );
 }
-{/* <Home/> */}
+
 function Root() {
   return (
     <Tab.Navigator
