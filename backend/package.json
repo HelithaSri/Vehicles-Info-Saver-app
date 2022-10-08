@@ -1,0 +1,23 @@
+{
+  "name": "vehicle_info_saver",
+  "version": "1.0.0",
+  "description": "Vehicle Info Saver App Backend",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
+  },
+  "keywords": [
+    "Backend",
+    "ExpressJs",
+    "Mongodb"
+  ],
+  "author": "HelithaSri",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.20"
+  }
+}
