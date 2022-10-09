@@ -23,9 +23,9 @@ export default function TouchableCard({nav,data}) {
             <Text style={{marginBottom:10,fontWeight:'bold'}} >Kandy</Text>
         </VStack> */}
         <View style={{width: '62%'}}>
-          <Heading size="sm">Royal Enfield Classic Desert Storm </Heading>
+          <Heading size="sm">{data.name}</Heading>
           <Text style={{marginBottom: 10, fontWeight: 'bold'}}>
-          <Ionicons name={"location-outline"} size={18} color={"red"} /> Nawalapitiya
+          <Ionicons name={"location-outline"} size={18} color={"red"} /> {data.location}
           </Text>
         </View>
       </HStack>

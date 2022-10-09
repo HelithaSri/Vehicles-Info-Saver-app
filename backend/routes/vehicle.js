@@ -14,10 +14,11 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const vehicles = new vehicle({
-        regNo: req.body.regNo,
-        description: req.body.description,
-        brandName: req.body.brandName
+        name: req.body.name,
+        location: req.body.location,
+        description: req.body.description
     })
+    console.log(vehicles)
     try {
         const response = await vehicles.save();
         res.json(response)

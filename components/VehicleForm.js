@@ -15,9 +15,9 @@ export default function VehicleForm({route}) {
 
   useEffect(()=>{
     console.log(route.params.obj.userId);
-    setVehicleName(route.params.obj.title)
-    setLocation(route.params.obj.id+'')
-    setVehicleDescription(route.params.obj.body)
+    setVehicleName(route.params.obj.name)
+    setLocation(route.params.obj.location)
+    setVehicleDescription(route.params.obj.description)
   })
 
   const actions = [

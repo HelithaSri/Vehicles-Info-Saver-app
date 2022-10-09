@@ -7,6 +7,6 @@ import AddVehicleForm from './../components/AddVehicleForm';
 export default function AddVehicle(props) {
 
   return (
-    <AddVehicleForm/>
+    <AddVehicleForm />
   );
 }
