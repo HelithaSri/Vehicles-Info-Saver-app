@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-na
 import React, { useEffect, useState } from 'react'
 import { NativeBaseProvider, ScrollView,Center, VStack, Input, TextArea, Button } from "native-base";
 import { FloatingAction } from "react-native-floating-action";
+import Toast from 'react-native-toast-message';
 
 export default function VehicleForm({route, navigation}) {
 
@@ -82,12 +83,22 @@ export default function VehicleForm({route, navigation}) {
     .then(res => {
 
       if ((status = '200')) {
-        Alert.alert('Vehicle Update Successfully !');
+        // Alert.alert('Vehicle Update Successfully !');
+        Toast.show({
+          type: 'success',
+          text1: 'Vehicle Update Successfully !',
+          position:'bottom'
+        });
       }
 
     })
     .catch(err => {
-      Alert.alert('Error occured !');
+      // Alert.alert('Error occured !');
+      Toast.show({
+        type: 'error',
+        text1: 'Error occured !',
+        position:'bottom'
+      });
     });
 
   }
@@ -102,13 +113,25 @@ export default function VehicleForm({route, navigation}) {
     .then(res => {
 
       if ((status = '200')) {
-        Alert.alert('Vehicle Deleted Successfully !');
+        // Alert.alert('Vehicle Deleted Successfully !');
+
+        Toast.show({
+          type: 'success',
+          text1: 'Vehicle Deleted Successfully !',
+          position:'bottom'
+        });
+
         navigation.navigate('Root');
       }
       console.log(res);
     })
     .catch(err => {
-      Alert.alert('Error occured !');
+      // Alert.alert('Error occured !');
+      Toast.show({
+        type: 'error',
+        text1: 'Error occured !',
+        position:'bottom'
+      });
       console.log(err);
     });
 
@@ -165,6 +188,7 @@ export default function VehicleForm({route, navigation}) {
             fabSelect(name)
           }}
         />
+        <Toast />
     </NativeBaseProvider>
   );
 }

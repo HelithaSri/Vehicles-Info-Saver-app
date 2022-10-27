@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { NativeBaseProvider, ScrollView,Center, VStack, Input, TextArea, Button } from "native-base";
 import { FloatingAction } from "react-native-floating-action";
 import { VehicleService } from "../services/VehicleService";
+import Toast from 'react-native-toast-message';
 
 export default function AddVehicleForm() {
 
@@ -47,11 +48,21 @@ export default function AddVehicleForm() {
         setName('')
         /* Alert.alert('Vehicle Saved Successfully !'); */
 
-        
+        Toast.show({
+          type: 'success',
+          text1: 'Vehicle Saved Successfully !',
+          position:'bottom'
+          // text2: 'Vehicle Saved Successfully !'
+        });
 
       })
       .catch(err => {
         Alert.alert('Error occured !');
+        Toast.show({
+          type: 'error',
+          text1: 'Error occured !',
+          position:'bottom'
+        });
       });
 
   }
@@ -107,6 +118,7 @@ export default function AddVehicleForm() {
           </Button>
         </Center>
       </ScrollView>
+      <Toast />
     </NativeBaseProvider>
   );
 }
