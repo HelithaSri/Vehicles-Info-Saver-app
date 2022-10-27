@@ -27,22 +27,19 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
+    console.log("server : ",req.params.id);
     try {
-        const vehicles = await vehicle.find();
-        for (const c of vehicles) {
-            if (req.body.regNo === c.regNo) {
-                const vehicle = await vehicle.findById(c._id)
-                vehicle.regNo = req.body.regNo;
-                vehicle.description = req.body.description;
-                vehicle.brandName = req.body.brandName;
-                const response = await vehicle.save();
-                res.send(response)
-            }
-        }
+        const vehicles = await vehicle.findById(req.params.id)
+        vehicles.name= req.body.name,
+        vehicles.location= req.body.location,
+        vehicles.description= req.body.description
 
-    } catch (e) {
-        res.send('error :' + e)
+        const response = await vehicles.save()
+        res.json(response)
+
+    } catch (err) {
+        res.send('Err : ' + err)
     }
 })
 
