@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { NativeBaseProvider, ScrollView,Center, VStack, Input, TextArea, Button } from "native-base";
 import { FloatingAction } from "react-native-floating-action";
 
-export default function VehicleForm({route}) {
+export default function VehicleForm({route, navigation}) {
 
   // const[fabActive,setFabActive]=useState(fabActiveProp? true : false);
   const[readOnly,setReadOnly]=useState(route.params.readOnlyProp || false);
@@ -12,6 +12,8 @@ export default function VehicleForm({route}) {
   const[vehicleName,setVehicleName]=useState('')
   const[location,setLocation]=useState('')
   const[vehicleDescription,setVehicleDescription]=useState('')
+
+  const ip = 'http://192.168.8.167:4000';
 
   useEffect(()=>{
     setVehicleName(route.params.obj.name)
@@ -43,6 +45,7 @@ export default function VehicleForm({route}) {
       await updateVehicleData(route.params.obj._id)
     }else{
       console.log("hi delete");
+      await deleteVehicleData(route.params.obj._id)
     }
   }
 
@@ -65,7 +68,7 @@ export default function VehicleForm({route}) {
   }
 
   updateVehicleData = async (id) =>{
-    fetch(`http://192.168.8.167:4000/vehicle/${id}`, {
+    fetch(`${ip}/vehicle/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         name: vehicleName,
@@ -85,6 +88,28 @@ export default function VehicleForm({route}) {
     })
     .catch(err => {
       Alert.alert('Error occured !');
+    });
+
+  }
+
+  deleteVehicleData = async (id) =>{
+    fetch(`${ip}/vehicle/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    .then(res => {
+
+      if ((status = '200')) {
+        Alert.alert('Vehicle Deleted Successfully !');
+        navigation.navigate('Root');
+      }
+      console.log(res);
+    })
+    .catch(err => {
+      Alert.alert('Error occured !');
+      console.log(err);
     });
 
   }

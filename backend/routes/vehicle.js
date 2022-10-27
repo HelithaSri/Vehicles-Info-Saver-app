@@ -39,23 +39,27 @@ router.put('/:id', async (req, res) => {
         res.json(response)
 
     } catch (err) {
-        res.send('Err : ' + err)
+        res.send('Error : ' + err)
     }
 })
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        const vehicles = await vehicle.find();
-        for (const c of vehicles) {
+        const vehicles = await vehicle.findById(req.params.id)
+        const response = await vehicles.remove();
+        res.send(response)
+
+        /* for (const c of vehicles) {
             if (req.body.regNo === c.regNo) {
                 const dlt = await vehicle.findById(c._id);
 
                 const response = await dlt.remove();
                 res.send(response)
             }
-        }
-    } catch (e) {
-        res.send('error :' + e)
+        } */
+
+    } catch (err) {
+        res.send('Error :' + err)
     }
 })
 
