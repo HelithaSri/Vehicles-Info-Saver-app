@@ -13,6 +13,20 @@ export default function AddVehicleForm() {
 
   const ip = 'http://192.168.8.167:4000';
 
+  const statusArray = [{
+    status: "success",
+    title: "Selection successfully moved!"
+  }, {
+    status: "error",
+    title: "Please try again later!"
+  }, {
+    status: "info",
+    title: "We are going live in July!"
+  }, {
+    status: "warning",
+    title: "Poor internet connection."
+  }];
+
   saveData = async ()=>{
     console.log(name , location , description)
     
@@ -31,7 +45,9 @@ export default function AddVehicleForm() {
         setLocation('')
         setDescription('')
         setName('')
-        Alert.alert('Vehicle Saved Successfully !');
+        /* Alert.alert('Vehicle Saved Successfully !'); */
+
+        
 
       })
       .catch(err => {
