@@ -11,11 +11,12 @@ export default function AddVehicleForm() {
   const [description,setDescription]=useState('');
   const [img,setImg]=useState('');
 
+  const ip = 'http://192.168.8.167:4000';
 
   saveData = async ()=>{
     console.log(name , location , description)
     
-    fetch('http://192.168.8.167:4000/vehicle', {
+    fetch(`${ip}/vehicle`, {
       method: 'POST',
       body: JSON.stringify({
         name: name,
