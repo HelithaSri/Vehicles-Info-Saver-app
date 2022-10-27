@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { NativeBaseProvider, ScrollView,Center, VStack, Input, TextArea, Button } from "native-base";
 import { FloatingAction } from "react-native-floating-action";
@@ -14,11 +14,11 @@ export default function VehicleForm({route}) {
   const[vehicleDescription,setVehicleDescription]=useState('')
 
   useEffect(()=>{
-    console.log(route.params.obj.userId);
     setVehicleName(route.params.obj.name)
     setLocation(route.params.obj.location)
     setVehicleDescription(route.params.obj.description)
-  })
+    console.log(route.params.obj._id);
+  },[])
 
   const actions = [
     {
@@ -37,12 +37,21 @@ export default function VehicleForm({route}) {
     }
   ];
 
+  actionButton = async () =>{
+    if (updateBtn) {
+      console.log("hi update");
+      await updateVehicleData(route.params.obj._id)
+    }else{
+      console.log("hi delete");
+    }
+  }
+
   function fabSelect(name){
     switch (name) {
       case "bt_edit":
         setReadOnly(false)
         setUpdateBtn(true)
-        console.log("545454");
+        console.log(route.params.obj._id);
         break;
 
       case "bt_delete":
@@ -53,6 +62,31 @@ export default function VehicleForm({route}) {
       default:
         break;
     }
+  }
+
+  updateVehicleData = async (id) =>{
+    fetch(`http://192.168.8.167:4000/vehicle/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        name: vehicleName,
+        location: location,
+        description: vehicleDescription,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    .then(res => {
+
+      if ((status = '200')) {
+        Alert.alert('Vehicle Update Successfully !');
+      }
+
+    })
+    .catch(err => {
+      Alert.alert('Error occured !');
+    });
+
   }
 
   return (
@@ -88,7 +122,9 @@ export default function VehicleForm({route}) {
           </VStack>
         </Center>
         <Center>
-          <Button id={"actionBtn"} style={{marginTop: 20, backgroundColor: updateBtn? '#00b894':'#d63031'}} w="70%" onPress={() => console.log("Hey ",route.params.obj.title)} isDisabled={readOnly}>
+          <Button style={{marginTop: 20, backgroundColor: updateBtn? '#00b894':'#d63031'}} w="70%" isDisabled={readOnly}
+          onPress={actionButton}
+          >
             {updateBtn?"Update":"Delete"}
           </Button>
         </Center>
